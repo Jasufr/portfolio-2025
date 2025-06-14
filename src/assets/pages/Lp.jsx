@@ -4,7 +4,6 @@ export default function Lp() {
   return (
     <>
       <Navbar />
-      alo
     </>
   );
 }

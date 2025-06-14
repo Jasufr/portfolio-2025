@@ -36,10 +36,10 @@ export default function Navbar() {
             className="w-42"
           />
         </Link>
-        <ul className="hidden text-2xl min-sm:flex gap-5 items-center">
+        <ul className="hidden text-2xl min-sm:flex gap-3 md:gap-5 items-center">
           <li className="relative group hidden sm:block cursor-pointer">
             <Link to="/">
-              <span className="relative inline-block px-1">
+              <span className="relative inline-block ">
                 About
                 <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
               </span>
@@ -47,7 +47,7 @@ export default function Navbar() {
           </li>
           <li className="relative group hidden sm:block cursor-pointer">
             <Link to="/">
-              <span className="relative inline-block px-1">
+              <span className="relative inline-block ">
                 Projects
                 <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
               </span>
@@ -55,13 +55,14 @@ export default function Navbar() {
           </li>
           <li className="relative group hidden sm:block cursor-pointer">
             <Link to="/">
-              <span className="relative inline-block px-1">
+              <span className="relative inline-block ">
                 Contact
                 <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
               </span>
             </Link>
           </li>
-          <li className="relative">
+
+          <li className="relative p-1">
             <img
               src={flagMap[language]}
               alt={`${language} flag`}
@@ -69,21 +70,25 @@ export default function Navbar() {
               onClick={() => setShowFlags((prev) => !prev)}
             />
 
-            {showFlags && (
-              <div className="absolute top-full mt-2 bg-white rounded flex flex-col gap-2 z-10">
-                {Object.entries(flagMap).map(([lang, path]) =>
-                  lang !== language ? (
-                    <img
-                      key={lang}
-                      src={path}
-                      alt={`${lang} flag`}
-                      className="w-7 cursor-pointer hover:scale-110 transition-transform mt-2 drop-shadow-sm"
-                      onClick={() => handleLanguageChange(lang)}
-                    />
-                  ) : null
-                )}
-              </div>
-            )}
+            <div
+              className={`absolute p-1 left-0 top-full mt-1 bg-white rounded flex flex-col gap-2 z-10 transition-all duration-300 ease-out overflow-hidden ${
+                showFlags
+                  ? "opacity-100 translate-y-0 max-h-40"
+                  : "opacity-0 -translate-y-3 max-h-0"
+              }`}
+            >
+              {Object.entries(flagMap).map(([lang, path]) =>
+                lang !== language ? (
+                  <img
+                    key={lang}
+                    src={path}
+                    alt={`${lang} flag`}
+                    className="w-7 cursor-pointer hover:scale-110 transition-transform mt-2 drop-shadow-sm"
+                    onClick={() => handleLanguageChange(lang)}
+                  />
+                ) : null
+              )}
+            </div>
           </li>
         </ul>
         <button
@@ -138,16 +143,27 @@ export default function Navbar() {
           </div>
           <ul className="flex gap-5 mb-4 text-3xl">
             <li>
-              <FontAwesomeIcon icon={faEnvelope} />
+              <a href="mailto:juetienne7@gmail.com">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </a>
             </li>
             <li>
-              <FontAwesomeIcon icon={faLinkedinIn} />
+              <a
+                href="https://www.linkedin.com/in/justin-etienne/"
+                target="_blank"
+              >
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </a>
             </li>
             <li>
-              <FontAwesomeIcon icon={faGithub} />
+              <a href="https://github.com/Jasufr" target="_blank">
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
             </li>
             <li>
-              <FontAwesomeIcon icon={faXTwitter} />
+              <a href="https://x.com/jasu_fr" target="_blank">
+                <FontAwesomeIcon icon={faXTwitter} />
+              </a>
             </li>
           </ul>
         </div>
