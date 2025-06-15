@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="flex justify-between mx-5 my-4 sm:px-16 sm:py-6 items-center">
+      <nav className="flex justify-between mx-5 my-4 sm:mx-16 sm:my-6 items-center">
         <Link to="/">
           <img
             src="/logo/black_line_no_bg_reframed.png"
@@ -69,9 +69,8 @@ export default function Navbar() {
               className="w-7 cursor-pointer hover:scale-110 transition-transform drop-shadow-sm"
               onClick={() => setShowFlags((prev) => !prev)}
             />
-
             <div
-              className={`absolute p-1 left-0 top-full mt-1 bg-white rounded flex flex-col gap-2 z-10 transition-all duration-300 ease-out overflow-hidden ${
+              className={`absolute p-1 left-0 top-full mt-1 rounded flex flex-col gap-2 z-10 transition-all duration-300 ease-out overflow-hidden ${
                 showFlags
                   ? "opacity-100 translate-y-0 max-h-40"
                   : "opacity-0 -translate-y-3 max-h-0"
@@ -91,31 +90,81 @@ export default function Navbar() {
             </div>
           </li>
         </ul>
-        <button
-          onClick={toggleMenu}
-          className="relative w-12 h-12 rounded flex items-center justify-center z-100 min-sm:hidden"
-        >
-          {/* Top bar */}
-          <span
-            className={`absolute w-7 h-[6px] border-[2px] rounded transition-all duration-300 ${
-              menuOpen ? " rotate-[-45deg] w-5 border-white" : "-translate-y-2"
+        <div className="flex items-center sm:hidden gap-1">
+          <div className="relative p-1  z-55">
+            <img
+              src={flagMap[language]}
+              alt={`${language} flag`}
+              className="w-7 cursor-pointer hover:scale-110 transition-transform drop-shadow-sm"
+              onClick={() => setShowFlags((prev) => !prev)}
+            />
+            <div
+              className={`absolute p-1 left-0 top-full mt-1 rounded flex flex-col gap-2 z-10 transition-all duration-300 ease-out overflow-hidden ${
+                showFlags
+                  ? "opacity-100 translate-y-0 max-h-40"
+                  : "opacity-0 -translate-y-3 max-h-0"
+              }`}
+            >
+              {Object.entries(flagMap).map(([lang, path]) =>
+                lang !== language ? (
+                  <img
+                    key={lang}
+                    src={path}
+                    alt={`${lang} flag`}
+                    className="w-7 cursor-pointer hover:scale-110 transition-transform mt-2 drop-shadow-sm"
+                    onClick={() => handleLanguageChange(lang)}
+                  />
+                ) : null
+              )}
+            </div>
+          </div>
+          <div
+            className={`absolute p-1 left-0 top-full mt-1 bg-white rounded flex flex-col gap-2 z-10 transition-all duration-300 ease-out overflow-hidden ${
+              showFlags
+                ? "opacity-100 translate-y-0 max-h-40"
+                : "opacity-0 -translate-y-3 max-h-0"
             }`}
-          />
-          {/* Middle bar */}
-          <span
-            className={`absolute w-7 h-[6px] border-[2px] rounded transition-all duration-300 ${
-              menuOpen ? "opacity-0" : "opacity-100"
-            }`}
-          />
-          {/* Bottom bar */}
-          <span
-            className={`absolute w-7 h-[6px] border-[2px] rounded transition-all duration-300 ${
-              menuOpen
-                ? "-translate-y-[0px] rotate-[45deg] w-5 border-white"
-                : "translate-y-2"
-            }`}
-          />
-        </button>
+          >
+            {Object.entries(flagMap).map(([lang, path]) =>
+              lang !== language ? (
+                <img
+                  key={lang}
+                  src={path}
+                  alt={`${lang} flag`}
+                  className="w-7 cursor-pointer hover:scale-110 transition-transform mt-2 drop-shadow-sm"
+                  onClick={() => handleLanguageChange(lang)}
+                />
+              ) : null
+            )}
+          </div>
+          <button
+            onClick={toggleMenu}
+            className="relative w-12 h-12 rounded flex items-center justify-center z-100 min-sm:hidden"
+          >
+            {/* Top bar */}
+            <span
+              className={`absolute w-7 h-[6px] border-[2px] rounded transition-all duration-300 ${
+                menuOpen
+                  ? " rotate-[-45deg] w-5 border-white"
+                  : "-translate-y-2"
+              }`}
+            />
+            {/* Middle bar */}
+            <span
+              className={`absolute w-7 h-[6px] border-[2px] rounded transition-all duration-300 ${
+                menuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            {/* Bottom bar */}
+            <span
+              className={`absolute w-7 h-[6px] border-[2px] rounded transition-all duration-300 ${
+                menuOpen
+                  ? "-translate-y-[0px] rotate-[45deg] w-5 border-white"
+                  : "translate-y-2"
+              }`}
+            />
+          </button>
+        </div>
         <div
           className={`absolute flex flex-col justify-between top-0 right-0 bg-green text-white font-montserrat font-medium items-center overflow-hidden transition-all duration-300 ${
             menuOpen ? "w-full" : "w-0"
