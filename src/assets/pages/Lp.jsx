@@ -13,12 +13,17 @@ export default function Lp() {
           </span>
         </h1>
       </div>
-      <div className="relative w-[110%] left-1/2 -translate-x-1/2 h-[800px] bg-beige rotate-5 mt-48 mb-12">
-        <div className="relative left-1/2 -translate-x-1/2 -rotate-5 z-10  font-dmsans font-medium text-3xl text-center mb-48">
-          <h2 className="mb-12">Explore my sandbox of 3D micro-experiences.</h2>
-          <div className="w-[90%] sm:w-[80%] h-58 sm:h-72 md:h-96 bg-black mx-auto rounded-full"></div>
+      <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70  mt-48 -mb-28 rotate-5"></div>
+      <div className="w-full h-[400px] sm:h-[600px] bg-beige flex items-center">
+        <div className="relative z-10 flex-1 font-dmsans font-medium text-3xl text-center">
+          <h2 className="text-center mb-10 mx-5">
+            Explore my sandbox of 3D micro-experiences.
+          </h2>
+          <div className="w-[90%] sm:w-[70%] aspect-[1/0.7] sm:aspect-[1/0.55] max-w-[1024px] bg-black mx-auto rounded-full"></div>
         </div>
       </div>
+      <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70 -mt-28 mb-48 rotate-5"></div>
+
       {/* <div className="-mt-[700px] z-10 relative font-dmsans font-medium text-3xl text-center mb-48">
         <h2 className="mb-12">Explore my sandbox of 3D micro-experiences.</h2>
         <div className="w-[90%] sm:w-[80%] h-58 sm:h-72 md:h-96 bg-black mx-auto rounded-full"></div>

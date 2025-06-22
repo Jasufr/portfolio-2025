@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="flex justify-between mx-5 my-4 sm:mx-16 sm:my-6 items-center">
+      <nav className="z-99 flex justify-between px-5 py-4 sm:px-16 sm:py-6 items-center fixed w-full bg-white/25">
         <Link to="/">
           <img
             src="/logo/black_line_no_bg_reframed.png"
@@ -166,7 +166,7 @@ export default function Navbar() {
           </button>
         </div>
         <div
-          className={`absolute flex flex-col justify-between top-0 right-0 bg-green text-white font-montserrat font-medium items-center overflow-hidden transition-all duration-300 ${
+          className={`absolute h-screen flex flex-col justify-between top-0 right-0 bg-green text-white font-montserrat font-medium items-center overflow-hidden transition-all duration-300 ${
             menuOpen ? "w-full" : "w-0"
           } h-full sm:hidden z-50`}
         >
