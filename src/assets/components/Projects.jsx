@@ -61,25 +61,52 @@ const projectsList = [
 export default function Projects() {
   return (
     <>
-      {projectsList.map((project, index) => (
-        <div key={index}>
-          <img src={project.image} alt="" />
-          <div>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div>
-              {project.url && (
-                <a href={project.url}>
-                  <FontAwesomeIcon icon={faUpRightFromSquare} />
+      <h2 className="text-3xl mb-8">Projects.</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-10 ">
+        {projectsList.map((project, index) => (
+          <div
+            key={index}
+            className="rounded-xl group relative overflow-hidden"
+          >
+            <img
+              src={project.image}
+              alt=""
+              className="aspect-[1/1] object-cover rounded-xl group-hover:blur transition-all duration-300"
+            />
+            <div className="w-full text-white rounded-xl h-full bg-green/80 p-5 text-xl absolute top-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex justify-center items-center flex-col ">
+              <div className="flex-1 flex flex-col justify-center">
+                <h3 className="text-3xl mb-2 text-center">{project.title}</h3>
+                <p className="text-sm text-center">{project.description}</p>
+              </div>
+              <div className="group-hover:pointer-events-auto self-end flex gap-5 text-2xl">
+                {project.url && (
+                  <a
+                    href={project.url}
+                    className="flex hover:text-black/50 transition-color duration-300"
+                  >
+                    <FontAwesomeIcon icon={faUpRightFromSquare} />
+                  </a>
+                )}
+                <a
+                  href={project.repoUrl}
+                  className="flex hover:text-black/50 transition-color duration-300"
+                >
+                  <FontAwesomeIcon icon={faGithub} />
                 </a>
-              )}
-              <a href={project.repoUrl}>
-                <FontAwesomeIcon icon={faGithub} />
-              </a>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      <a
+        href="/"
+        className="text-2xl mx-auto px-6 py-3 rounded-full my-12 text-white bg-green w-fit flex justify-center items-center
+  shadow-[inset_0_0px_0px_rgba(0,0,0,0.5)]
+  hover:shadow-[inset_0_4px_10px_rgba(0,0,0,0.5)]
+  transition-all duration-300"
+      >
+        See More
+      </a>
     </>
   );
 }
