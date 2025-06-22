@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Projects from "../components/Projects";
 
 export default function Lp() {
   return (
@@ -22,12 +23,11 @@ export default function Lp() {
           <div className="w-[90%] sm:w-[70%] aspect-[1/0.7] sm:aspect-[1/0.55] max-w-[1024px] bg-black mx-auto rounded-full"></div>
         </div>
       </div>
-      <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70 -mt-28 mb-48 rotate-5"></div>
-
-      {/* <div className="-mt-[700px] z-10 relative font-dmsans font-medium text-3xl text-center mb-48">
-        <h2 className="mb-12">Explore my sandbox of 3D micro-experiences.</h2>
-        <div className="w-[90%] sm:w-[80%] h-58 sm:h-72 md:h-96 bg-black mx-auto rounded-full"></div>
-      </div> */}
+      <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70 -mt-28 mb-28 rotate-5"></div>
+      <div className="font-dmsans font-medium text-3xl mx-5">
+        <h2>Projects.</h2>
+        <Projects />
+      </div>
     </>
   );
 }
