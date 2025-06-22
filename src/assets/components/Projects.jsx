@@ -1,6 +1,7 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
 const projectsList = [
   {
@@ -59,21 +60,35 @@ const projectsList = [
 ];
 
 export default function Projects() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   return (
     <>
-      <h2 className="text-3xl mb-8">Projects.</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-10 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-10">
         {projectsList.map((project, index) => (
           <div
             key={index}
-            className="rounded-xl group relative overflow-hidden"
+            className="rounded-xl group relative overflow-hidden cursor-pointer"
+            onClick={() => setActiveIndex(index === activeIndex ? null : index)}
           >
             <img
               src={project.image}
               alt=""
               className="aspect-[1/1] object-cover rounded-xl group-hover:blur transition-all duration-300"
             />
-            <div className="w-full text-white rounded-xl h-full bg-green/80 p-5 text-xl absolute top-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex justify-center items-center flex-col ">
+            <div
+              className={`
+            w-full text-white rounded-xl h-full bg-green/80 p-5 text-xl absolute top-0
+            flex justify-center items-center flex-col
+            transition-opacity duration-300 pointer-events-none
+            ${
+              activeIndex === index
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0"
+            }
+            sm:opacity-0 sm:group-hover:opacity-100 sm:pointer-events-none sm:group-hover:pointer-events-auto
+          `}
+            >
               <div className="flex-1 flex flex-col justify-center">
                 <h3 className="text-3xl mb-2 text-center">{project.title}</h3>
                 <p className="text-sm text-center">{project.description}</p>
@@ -82,14 +97,18 @@ export default function Projects() {
                 {project.url && (
                   <a
                     href={project.url}
-                    className="flex hover:text-black/50 transition-color duration-300"
+                    className="flex hover:text-black/50 transition-colors duration-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <FontAwesomeIcon icon={faUpRightFromSquare} />
                   </a>
                 )}
                 <a
                   href={project.repoUrl}
-                  className="flex hover:text-black/50 transition-color duration-300"
+                  className="flex hover:text-black/50 transition-colors duration-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FontAwesomeIcon icon={faGithub} />
                 </a>
