@@ -6,6 +6,7 @@ import Projects from "../components/Projects";
 import ReachOut from "../components/ReachOut";
 import Stack from "../components/Stack";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HeroThreeBg from "../components/HeroThreeBg";
 
 export default function Lp() {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -44,8 +45,9 @@ export default function Lp() {
     <>
       <Navbar />
       {/* Hero Section */}
-      <div className="mx-5 sm:mx-16 mt-40">
-        <h1 className="font-dmsans font-semibold text-center text-3xl">
+      <div className="relative mx-5 sm:mx-16 h-screen flex justify-center items-center">
+        <HeroThreeBg />
+        <h1 className="font-dmsans font-semibold text-center text-3xl relative z-10">
           <span>Bonjour, welcome to my world.</span>
           <br />
           <span className="text-orange block mt-2">
@@ -54,7 +56,7 @@ export default function Lp() {
         </h1>
       </div>
       {/* Sandbox Showcase */}
-      <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70  mt-48 -mb-28 rotate-5"></div>
+      <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70  mt-12 -mb-28 rotate-5"></div>
       <div className="w-full h-[400px] sm:h-[600px] bg-beige flex items-center">
         <div className="relative z-10 flex-1 font-dmsans font-medium text-3xl text-center">
           <h2 className="text-center mb-10 mx-5">
