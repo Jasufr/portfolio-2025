@@ -38,7 +38,7 @@ export default function Navbar() {
         </Link>
         <ul className="hidden text-2xl min-sm:flex gap-3 md:gap-5 items-center">
           <li className="relative group hidden sm:block cursor-pointer">
-            <Link to="/">
+            <Link to="/about">
               <span className="relative inline-block ">
                 About
                 <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
@@ -46,7 +46,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="relative group hidden sm:block cursor-pointer">
-            <Link to="/">
+            <Link to="/projects">
               <span className="relative inline-block ">
                 Projects
                 <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
@@ -180,10 +180,10 @@ export default function Navbar() {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <ul className="flex flex-col gap-4 text-2xl">
               <li>
-                <Link to="/">About</Link>
+                <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/">Projects</Link>
+                <Link to="/projects">Projects</Link>
               </li>
               <li>
                 <Link to="/">Contact</Link>
