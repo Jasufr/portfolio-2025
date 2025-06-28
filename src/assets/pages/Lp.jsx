@@ -8,7 +8,7 @@ import Stack from "../components/Stack";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HeroThreeBg from "../components/HeroThreeBg";
 
-export default function Lp() {
+export default function Lp({ onThreeLoading }) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
   const showcaseRef = useRef(null);
@@ -46,7 +46,7 @@ export default function Lp() {
       <Navbar />
       {/* Hero Section */}
       <div className="relative mx-5 sm:mx-16 h-screen flex justify-center items-center">
-        <HeroThreeBg />
+        <HeroThreeBg onLoadingProgress={onThreeLoading} />
         <h1 className="font-dmsans font-semibold text-center text-3xl relative z-10">
           <span>Bonjour, welcome to my world.</span>
           <br />

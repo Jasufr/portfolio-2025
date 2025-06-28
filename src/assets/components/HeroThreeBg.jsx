@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-export default function HeroThreeBg() {
+export default function HeroThreeBg({ onLoadingProgress }) {
   const mountRef = useRef(null);
 
   useEffect(() => {
@@ -19,7 +19,20 @@ export default function HeroThreeBg() {
     renderer.setClearColor(0x000000, 0); // transparent
     mount.appendChild(renderer.domElement);
 
-    const loader = new GLTFLoader();
+    // --- LoadingManager for progress ---
+    const loadingManager = new THREE.LoadingManager();
+    loadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
+      const percent = Math.round((itemsLoaded / itemsTotal) * 100);
+      console.log(percent);
+
+      if (onLoadingProgress) onLoadingProgress(percent);
+    };
+    loadingManager.onLoad = () => {
+      if (onLoadingProgress) onLoadingProgress(100);
+    };
+    // -----------------------------------
+
+    const loader = new GLTFLoader(loadingManager);
     let models = [];
     // Detect if on smartphone (e.g., width < 640px)
     const isMobile = window.innerWidth < 640;
@@ -161,7 +174,7 @@ export default function HeroThreeBg() {
       mount.removeChild(renderer.domElement);
       renderer.dispose();
     };
-  }, []);
+  }, [onLoadingProgress]);
 
   return (
     <div
