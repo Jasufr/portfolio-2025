@@ -13,3 +13,24 @@ body {
 .shadow-button:hover {
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0.5), inset 0 4px 10px rgba(0, 0, 0, 0.5);
 }
+
+/* .sns-footer-icons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  gap: 1.25rem;
+} */
+@media (max-width: 459px) {
+  /* .sns-footer-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+  } */
+  .sns-footer-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    /* gap: 1.25rem; */
+  }
+}

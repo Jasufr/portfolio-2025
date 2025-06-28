@@ -2,6 +2,8 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import ShadowButton from "../atoms/ShadowButton";
 
 const projectsList = [
   {
@@ -144,12 +146,9 @@ export default function Projects() {
           </div>
         ))}
       </div>
-      <a
-        href="/"
-        className="shadow-button text-2xl mx-auto px-6 py-3 rounded-full my-12 text-white bg-green w-fit flex justify-center items-center"
-      >
-        See More
-      </a>
+      <div className="mb-28">
+        <ShadowButton link={"/projects"} text={"See More"} />
+      </div>
     </>
   );
 }

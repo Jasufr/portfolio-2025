@@ -85,7 +85,7 @@ export default function Stack() {
   return (
     <>
       <h2 className="mb-8 text-3xl">Stack.</h2>
-      <div className="bg-beige -mx-5 py-10 px-5 mb-12">
+      <div className="bg-beige -mx-5 py-20 px-5">
         <ul className="flex flex-wrap items-center justify-center sm:w-[80%] max-w-[1024px] mx-auto gap-8">
           {stackList.map((stack, index) => (
             <li key={index}>

@@ -1,5 +1,7 @@
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Projects from "../components/Projects";
+import ReachOut from "../components/ReachOut";
 import Stack from "../components/Stack";
 
 export default function Lp() {
@@ -25,12 +27,12 @@ export default function Lp() {
         </div>
       </div>
       <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70 -mt-28 mb-28 rotate-5"></div>
-      <div className="font-dmsans font-medium  mx-5">
+      <div className="font-dmsans font-medium mx-5">
         <Projects />
-      </div>
-      <div className="font-dmsans font-medium  mx-5">
         <Stack />
+        <ReachOut />
       </div>
+      <Footer />
     </>
   );
 }
