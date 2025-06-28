@@ -118,7 +118,7 @@ export default function Navbar() {
               )}
             </div>
           </div>
-          <div
+          {/* <div
             className={`absolute p-1 left-0 top-full mt-1 bg-white rounded flex flex-col gap-2 z-10 transition-all duration-300 ease-out overflow-hidden ${
               showFlags
                 ? "opacity-100 translate-y-0 max-h-40"
@@ -136,7 +136,7 @@ export default function Navbar() {
                 />
               ) : null
             )}
-          </div>
+          </div> */}
           <button
             onClick={toggleMenu}
             className="relative w-12 h-12 rounded flex items-center justify-center z-100 min-sm:hidden"
