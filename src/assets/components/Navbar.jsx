@@ -28,12 +28,12 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="z-99 flex justify-between px-5 py-4 sm:px-16 sm:py-6 items-center fixed w-full bg-white/25">
+      <nav className="z-99 flex justify-between px-5 py-4 sm:px-16 sm:py-6 items-center fixed w-full navbar-blur bg-white/25">
         <Link to="/">
           <img
             src="/logo/black_line_no_bg_reframed.png"
             alt="je-logo"
-            className="w-42"
+            className="w-42 pointer-events-none"
           />
         </Link>
         <ul className="hidden text-2xl min-sm:flex gap-3 md:gap-5 items-center">
@@ -174,7 +174,7 @@ export default function Navbar() {
             <img
               src="/logo/white_line_no_bg_reframed.png"
               alt="je-logo"
-              className="w-42 ms-5 mt-4"
+              className="w-42 ms-5 mt-4 pointer-events-none"
             />
           </Link>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">

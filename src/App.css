@@ -14,6 +14,11 @@ body {
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0.5), inset 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
+.navbar-blur {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
 @media (max-width: 459px) {
   .sns-footer-icons {
     display: grid;

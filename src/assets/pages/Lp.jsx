@@ -101,7 +101,7 @@ export default function Lp() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={isTouch ? (e) => e.stopPropagation() : undefined}
-                className="flex justify-center items-center gap-3 hover:opacity-40 transition-all duration-300"
+                className="p-2 flex justify-center items-center gap-3 hover:text-black/50 transition-all duration-300"
               >
                 <span>View Site.</span>
                 <FontAwesomeIcon

@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import {
-  faGithub,
-  faLinkedinIn,
-  faXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import SnsLinks from "../atoms/SnsLinks";
 
 export default function Footer() {
@@ -16,7 +11,7 @@ export default function Footer() {
           <img
             src="/logo/black_full_no_bg_reframed.png"
             alt="je-logo"
-            className="w-28 sm:w-52 mx-auto"
+            className="w-28 sm:w-52 mx-auto pointer-events-none"
           />
         </div>
         <ul className="flex flex-col items-center flex-1">
