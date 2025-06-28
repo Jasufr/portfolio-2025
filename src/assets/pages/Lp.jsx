@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Projects from "../components/Projects";
+import Stack from "../components/Stack";
 
 export default function Lp() {
   return (
@@ -26,6 +27,9 @@ export default function Lp() {
       <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70 -mt-28 mb-28 rotate-5"></div>
       <div className="font-dmsans font-medium  mx-5">
         <Projects />
+      </div>
+      <div className="font-dmsans font-medium  mx-5">
+        <Stack />
       </div>
     </>
   );

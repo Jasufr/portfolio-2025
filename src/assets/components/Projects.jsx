@@ -1,7 +1,7 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const projectsList = [
   {
@@ -61,15 +61,39 @@ const projectsList = [
 
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    const checkTouch = () => {
+      setIsTouch(
+        "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0 ||
+          navigator.msMaxTouchPoints > 0
+      );
+    };
+    checkTouch();
+    window.addEventListener("resize", checkTouch);
+    return () => window.removeEventListener("resize", checkTouch);
+  }, []);
 
   return (
     <>
+      <h2 className="mb-8 font-dmsans font-medium text-3xl">Projects.</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-10">
         {projectsList.map((project, index) => (
           <div
             key={index}
-            className="rounded-xl group relative overflow-hidden cursor-pointer"
-            onClick={() => setActiveIndex(index === activeIndex ? null : index)}
+            className="rounded-xl group relative overflow-hidden cursor-pointer shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
+            onClick={
+              isTouch
+                ? (e) => {
+                    // Only toggle overlay if not clicking a link
+                    if (e.target.tagName !== "A" && !e.target.closest("a")) {
+                      setActiveIndex(index === activeIndex ? null : index);
+                    }
+                  }
+                : undefined
+            }
           >
             <img
               src={project.image}
@@ -80,26 +104,28 @@ export default function Projects() {
               className={`
             w-full text-white rounded-xl h-full bg-green/80 p-5 text-xl absolute top-0
             flex justify-center items-center flex-col
-            transition-opacity duration-300 pointer-events-none
+            transition-opacity duration-300
             ${
-              activeIndex === index
-                ? "opacity-100 pointer-events-auto"
-                : "opacity-0"
+              isTouch
+                ? activeIndex === index
+                  ? "opacity-100 pointer-events-auto"
+                  : "opacity-0 pointer-events-none"
+                : "sm:opacity-0 sm:group-hover:opacity-100 sm:pointer-events-none sm:group-hover:pointer-events-auto"
             }
-            sm:opacity-0 sm:group-hover:opacity-100 sm:pointer-events-none sm:group-hover:pointer-events-auto
           `}
             >
               <div className="flex-1 flex flex-col justify-center">
                 <h3 className="text-3xl mb-2 text-center">{project.title}</h3>
                 <p className="text-sm text-center">{project.description}</p>
               </div>
-              <div className="group-hover:pointer-events-auto self-end flex gap-5 text-2xl">
+              <div className="self-end flex gap-5 text-2xl">
                 {project.url && (
                   <a
                     href={project.url}
                     className="flex hover:text-black/50 transition-colors duration-300"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     <FontAwesomeIcon icon={faUpRightFromSquare} />
                   </a>
@@ -109,6 +135,7 @@ export default function Projects() {
                   className="flex hover:text-black/50 transition-colors duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <FontAwesomeIcon icon={faGithub} />
                 </a>
@@ -119,10 +146,7 @@ export default function Projects() {
       </div>
       <a
         href="/"
-        className="text-2xl mx-auto px-6 py-3 rounded-full my-12 text-white bg-green w-fit flex justify-center items-center
-  shadow-[inset_0_0px_0px_rgba(0,0,0,0.5)]
-  hover:shadow-[inset_0_4px_10px_rgba(0,0,0,0.5)]
-  transition-all duration-300"
+        className="shadow-button text-2xl mx-auto px-6 py-3 rounded-full my-12 text-white bg-green w-fit flex justify-center items-center"
       >
         See More
       </a>
