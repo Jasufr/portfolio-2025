@@ -19,45 +19,84 @@ export default function HeroThreeBg() {
     renderer.setClearColor(0x000000, 0); // transparent
     mount.appendChild(renderer.domElement);
 
-    // Load scone1, scone2, scone3.glb models
     const loader = new GLTFLoader();
     let models = [];
-    const modelConfigs = [
-      {
-        url: "/models/scone1.glb",
-        position: [1.5, -0.5, 0],
-        rotation: [0.3, 0.1, -0.2],
-        scale: [0.65, 0.65, 0.65],
-        color: 0x714949,
-        animate: (model) => {
-          model.rotation.x += 0.0005;
-          model.rotation.y += 0.0003;
-        },
-      },
-      {
-        url: "/models/scone2.glb",
-        position: [0.5, 0.7, 0],
-        rotation: [0.6, 0.2, -1.1],
-        scale: [0.7, 0.7, 0.7],
-        color: 0x6c786e,
-        animate: (model) => {
-          model.rotation.x -= 0.0004;
-          model.rotation.z += 0.0002;
-        },
-      },
-      {
-        url: "/models/scone3.glb",
-        position: [-1.5, 0, 0],
-        rotation: [0.3, -0.2, 0.5],
-        scale: [0.65, 0.7, 0.65],
-        color: 0x708ba7,
-        animate: (model) => {
-          model.rotation.z += 0.0002;
-          model.rotation.y -= 0.0003;
-          model.rotation.x += 0.0005;
-        },
-      },
-    ];
+    // Detect if on smartphone (e.g., width < 640px)
+    const isMobile = window.innerWidth < 640;
+    // Set model configs based on device
+    const modelConfigs = isMobile
+      ? [
+          {
+            url: "/models/scone1.glb",
+            position: [0.8, -1.2, 0],
+            rotation: [0.3, 0.1, -0.2],
+            scale: [0.5, 0.5, 0.5],
+            color: 0x714949,
+            animate: (model) => {
+              model.rotation.x += 0.0005;
+              model.rotation.y += 0.0003;
+            },
+          },
+          {
+            url: "/models/scone2.glb",
+            position: [0.4, 1, 0],
+            rotation: [0.6, 0.2, -1.1],
+            scale: [0.5, 0.5, 0.5],
+            color: 0x6c786e,
+            animate: (model) => {
+              model.rotation.x -= 0.0004;
+              model.rotation.z += 0.0002;
+            },
+          },
+          {
+            url: "/models/scone3.glb",
+            position: [-0.9, -0.3, 0],
+            rotation: [0.3, -0.2, 0.5],
+            scale: [0.5, 0.5, 0.5],
+            color: 0x708ba7,
+            animate: (model) => {
+              model.rotation.z += 0.0002;
+              model.rotation.y -= 0.0003;
+              model.rotation.x += 0.0005;
+            },
+          },
+        ]
+      : [
+          {
+            url: "/models/scone1.glb",
+            position: [1.5, -0.5, 0],
+            rotation: [0.3, 0.1, -0.2],
+            scale: [0.65, 0.65, 0.65],
+            color: 0x714949,
+            animate: (model) => {
+              model.rotation.x += 0.0005;
+              model.rotation.y += 0.0003;
+            },
+          },
+          {
+            url: "/models/scone2.glb",
+            position: [0.5, 0.7, 0],
+            rotation: [0.6, 0.2, -1.1],
+            scale: [0.7, 0.7, 0.7],
+            color: 0x6c786e,
+            animate: (model) => {
+              model.rotation.x -= 0.0004;
+              model.rotation.z += 0.0002;
+            },
+          },
+          {
+            url: "/models/scone3.glb",
+            position: [-1.5, 0, 0],
+            rotation: [0.3, -0.2, 0.5],
+            scale: [0.65, 0.7, 0.65],
+            color: 0x708ba7,
+            animate: (model) => {
+              model.rotation.z += 0.0002;
+              model.rotation.y -= 0.0003;
+              model.rotation.x += 0.0005;
+            },
+          },
+        ];
 
     modelConfigs.forEach((cfg, i) => {
       loader.load(
