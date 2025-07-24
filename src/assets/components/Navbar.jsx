@@ -166,55 +166,57 @@ export default function Navbar() {
           </button>
         </div>
         <div
-          className={`absolute h-screen flex flex-col justify-between top-0 right-0 bg-green text-white font-montserrat font-medium items-center overflow-hidden transition-all duration-300 ${
+          className={`absolute h-screen top-0 right-0 bg-green ${
             menuOpen ? "w-full" : "w-0"
-          } h-full sm:hidden z-50`}
+          }  sm:hidden z-50`}
         >
-          <Link to="/" className="block w-fit self-start">
-            <img
-              src="/logo/white_line_no_bg_reframed.png"
-              alt="je-logo"
-              className="w-42 ms-5 mt-4 pointer-events-none"
-            />
-          </Link>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <ul className="flex flex-col gap-4 text-2xl">
+          <div className="flex flex-col justify-between  text-white font-montserrat font-medium items-center overflow-hidden transition-all duration-300 min-h-[100dvh]">
+            <Link to="/" className="block w-fit self-start">
+              <img
+                src="/logo/white_line_no_bg_reframed.png"
+                alt="je-logo"
+                className="w-42 ms-5 mt-4 pointer-events-none"
+              />
+            </Link>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <ul className="flex flex-col gap-4 text-2xl">
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <Link to="/projects">Projects</Link>
+                </li>
+                <li>
+                  <Link to="/">Contact</Link>
+                </li>
+              </ul>
+            </div>
+            <ul className="flex gap-5 mb-4 text-3xl">
               <li>
-                <Link to="/about">About</Link>
+                <a href="mailto:juetienne7@gmail.com">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </a>
               </li>
               <li>
-                <Link to="/projects">Projects</Link>
+                <a
+                  href="https://www.linkedin.com/in/justin-etienne/"
+                  target="_blank"
+                >
+                  <FontAwesomeIcon icon={faLinkedinIn} />
+                </a>
               </li>
               <li>
-                <Link to="/">Contact</Link>
+                <a href="https://github.com/Jasufr" target="_blank">
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/jasu_fr" target="_blank">
+                  <FontAwesomeIcon icon={faXTwitter} />
+                </a>
               </li>
             </ul>
           </div>
-          <ul className="flex gap-5 mb-4 text-3xl">
-            <li>
-              <a href="mailto:juetienne7@gmail.com">
-                <FontAwesomeIcon icon={faEnvelope} />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/justin-etienne/"
-                target="_blank"
-              >
-                <FontAwesomeIcon icon={faLinkedinIn} />
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/Jasufr" target="_blank">
-                <FontAwesomeIcon icon={faGithub} />
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/jasu_fr" target="_blank">
-                <FontAwesomeIcon icon={faXTwitter} />
-              </a>
-            </li>
-          </ul>
         </div>
       </nav>
     </>

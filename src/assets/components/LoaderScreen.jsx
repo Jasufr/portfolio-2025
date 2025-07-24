@@ -30,7 +30,7 @@ export default function LoaderScreen({ percent, canEnter, onEnter }) {
   return (
     <div
       id="preloader"
-      className={`font-dmsans fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-green transition-opacity duration-700 ${
+      className={`min-h-[100vh] font-dmsans fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-green transition-opacity duration-700 ${
         fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
