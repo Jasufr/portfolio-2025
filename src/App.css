@@ -30,3 +30,9 @@ body {
     justify-items: center;
   }
 }
+
+#wavePath {
+  stroke-dasharray: 1000; /* Adjust based on path length */
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 1s ease-out;
+}

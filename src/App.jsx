@@ -36,8 +36,14 @@ function App() {
   }, []);
 
   // Combine progress
+
+  let percent = 0;
   useEffect(() => {
-    const percent = Math.round((threePercent + imgPercent) / 2);
+    if (threePercent) {
+      percent = Math.round((threePercent + imgPercent) / 2);
+    } else {
+      percent = imgPercent;
+    }
     setLoadingPercent(percent);
     if (percent === 100) {
       setCanEnter(true); // Only allow enter, don't auto-hide
