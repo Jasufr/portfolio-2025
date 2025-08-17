@@ -13,6 +13,10 @@ export default function AboutPage() {
   const introDivRef = useRef(null);
   const firstDivRef = useRef(null);
   const secondDivRef = useRef(null);
+  const thirdDivRef = useRef(null);
+  const fourthDivRef = useRef(null);
+  const fifthDivRef = useRef(null);
+  const sixthDivRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
@@ -37,15 +41,18 @@ export default function AboutPage() {
       y: 0,
     });
 
-    gsap.set(firstDivRef.current, {
+    gsap.set([firstDivRef.current, thirdDivRef.current, fifthDivRef.current], {
       opacity: 0,
       x: -20,
     });
 
-    gsap.set(secondDivRef.current, {
-      opacity: 0,
-      x: +20,
-    });
+    gsap.set(
+      [secondDivRef.current, fourthDivRef.current, sixthDivRef.current],
+      {
+        opacity: 0,
+        x: +20,
+      }
+    );
 
     tl.to(subContainerRef.current, {
       y: () => {
@@ -82,6 +89,46 @@ export default function AboutPage() {
           ease: "power2.out",
         },
         0.1
+      )
+      .to(
+        thirdDivRef.current,
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        0.2
+      )
+      .to(
+        fourthDivRef.current,
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        0.3
+      )
+      .to(
+        fifthDivRef.current,
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        0.4
+      )
+      .to(
+        sixthDivRef.current,
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        0.5
       );
 
     return () => {
@@ -147,8 +194,8 @@ export default function AboutPage() {
           </div>
           <AboutCard
             ref={firstDivRef}
-            positionX={"55%"}
-            positionY={"38%"}
+            positionY={"40%"}
+            positionYsm={"48%"}
             left={false}
             title={"Bachelor’s Degree – Aix-Marseille University"}
             text={
@@ -157,11 +204,53 @@ export default function AboutPage() {
           />
           <AboutCard
             ref={secondDivRef}
-            positionX={"55%"}
-            positionY={"47%"}
+            positionY={"48%"}
+            positionYsm={"53%"}
             left={true}
-            title={"Japanese Studies – EF Tokyo"}
-            text={"Intensive 4-month Japanese language program in Tokyo."}
+            title={"EF Tokyo – Japanese Language Program"}
+            text={
+              "Intensive 4-month Japanese study, gaining strong communication and immersion experience in Tokyo."
+            }
+          />
+          <AboutCard
+            ref={thirdDivRef}
+            positionY={"54%"}
+            positionYsm={"58%"}
+            left={false}
+            title={"Master’s Degree (Year 1) – Aix-Marseille University"}
+            text={
+              "Asian societies & cultures, with focus on Japanese geopolitics. Research project on wine in France–Japan international relations."
+            }
+          />
+          <AboutCard
+            ref={fourthDivRef}
+            positionY={"62%"}
+            positionYsm={"64%"}
+            left={true}
+            title={"Meiji University – University Exchange"}
+            text={
+              "Studied intercultural communication and deepened knowledge of Japanese society while living in Tokyo."
+            }
+          />
+          <AboutCard
+            ref={fifthDivRef}
+            positionY={"68%"}
+            positionYsm={"69%"}
+            left={false}
+            title={"Le Wagon Tokyo – Web Development Bootcamp"}
+            text={
+              "3-month intensive program learning full-stack development through hands-on projects."
+            }
+          />
+          <AboutCard
+            ref={sixthDivRef}
+            positionY={"76%"}
+            positionYsm={"74%"}
+            left={true}
+            title={"Full-Stack Developer – GxP"}
+            text={
+              "Currently building and maintaining web applications, combining creativity and technical expertise."
+            }
           />
         </div>
         <Footer />

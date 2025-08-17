@@ -166,7 +166,7 @@ export default function Navbar() {
           </button>
         </div>
         <div
-          className={`absolute h-screen top-0 right-0 bg-green ${
+          className={`absolute h-screen top-0 right-0 bg-green overflow-hidden ${
             menuOpen ? "w-full" : "w-0"
           }  sm:hidden z-50`}
         >
