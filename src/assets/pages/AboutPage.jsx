@@ -4,11 +4,15 @@ import React, { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MeGLBModel from "../components/MeGLBModel";
+import AboutCard from "../atoms/AboutCard";
 
 export default function AboutPage() {
   const containerRef = useRef(null);
+  const subContainerRef = useRef(null);
   const pathRef = useRef(null);
+  const introDivRef = useRef(null);
   const firstDivRef = useRef(null);
+  const secondDivRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
@@ -19,34 +23,66 @@ export default function AboutPage() {
       scrollTrigger: {
         trigger: containerRef.current,
         scrub: 1,
-        pin: containerRef.current,
-        pinSpacing: true,
         start: "top top",
-        end: "+=300%",
+        // end: "bottom bottom",
+        end: "+=600%",
+        pin: true,
         markers: true,
       },
     });
 
     // Set initial state
+    gsap.set(introDivRef.current, {
+      opacity: 1,
+      y: 0,
+    });
+
     gsap.set(firstDivRef.current, {
       opacity: 0,
       x: -20,
     });
 
-    tl.to(pathRef.current, {
-      drawSVG: "100%",
-      duration: 1,
-      ease: "none",
-    }).to(
-      firstDivRef.current,
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.3,
-        ease: "power2.out",
+    gsap.set(secondDivRef.current, {
+      opacity: 0,
+      x: +20,
+    });
+
+    tl.to(subContainerRef.current, {
+      y: () => {
+        const intro = introDivRef.current;
+        const rect = intro.getBoundingClientRect();
+        return -rect.height;
       },
-      0.3
-    ); // This will trigger at 20% of the animation
+    })
+      .to(
+        pathRef.current,
+        {
+          drawSVG: "100%",
+          duration: 1,
+          ease: "none",
+        },
+        "-=0.8"
+      )
+      .to(
+        firstDivRef.current,
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        0
+      )
+      .to(
+        secondDivRef.current,
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        0.1
+      );
 
     return () => {
       if (tl.scrollTrigger) tl.scrollTrigger.kill();
@@ -57,46 +93,76 @@ export default function AboutPage() {
   return (
     <>
       <MeGLBModel />
-
-      <div className="relative">
+      {/* <Navbar /> */}
+      <div className="relative" ref={containerRef}>
         <Navbar />
-        <div className="pt-[150px] w-2/3 mx-auto text-center">
-          <p>
-            Hi, I am Justin. Full Stack developer. Fond of 3d. Blabla Blabla
-            Blabla Blabla Blabla Blabla Blabla Blabla Blabla BlablaBlabla Blabla
-            Blabla BlablaBlabla Blabla Blabla BlablaBlabla Blabla Blabla
-            BlablaBlabla Blabla Blabla BlablaBlabla Blabla Blabla Blabla
-          </p>
-        </div>
-        <div
-          ref={firstDivRef}
-          className="absolute left-[30%] top-[40%] opacity-0"
-        >
-          <p>aaaa</p>
-          <p>aaaaaaaa</p>
-        </div>
-        <div
-          className="min-h-screen w-full flex items-center justify-center overflow-hidden"
-          ref={containerRef}
-        >
-          <svg
-            className="svg__shape rotate-90 w-full h-full max-w-[900px] max-h-[80vh]"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 3000 900"
-          >
-            <g clipPath="url(#a)">
-              <g className="svg__path">
-                <path
-                  ref={pathRef}
+        <div className="relative" ref={subContainerRef}>
+          <div className="flex flex-col">
+            <div
+              className="pt-[150px] w-2/3 mx-auto text-justify"
+              ref={introDivRef}
+            >
+              <h1>
+                Hi, I’m Justin Etienne — a French full-stack developer living in
+                Tokyo. I’m passionate about building interactive and creative
+                digital experiences, especially with 3D and modern web
+                technologies. <br /> With an academic background in languages,
+                culture, and international relations, I bring a unique
+                perspective that bridges technology, communication, and design.
+              </h1>
+            </div>
+            <div className="flex-grow flex justify-center">
+              <div
+                className="w-full flex items-center justify-center overflow-hidden h-[98vh]"
+                // ref={containerRef}
+              >
+                <svg
+                  width="257"
+                  height="858"
+                  viewBox="0 0 257 858"
                   fill="none"
-                  stroke="#6a7c6b"
-                  strokeLinecap="round"
-                  strokeWidth="6"
-                  d="M226.39 500.018c284.832.004 413.672.038 559.61.278 95.921.155 181.398-9.257 238 6.82 51.62 14.644 75.31-7.436 115.75-21.812 52.881-18.721 84.36 16.868 120.25 35.971 41.22 21.576 71.688-.606 116-36.246s81.75 2.665 123.119 31.642c46.617 32.635 81.881 1.775 128.881-35.944 34.429-28.24 73.702.185 112 28.525 49.944 36.7 88.816.23 134.25-18.77 35.327-14.699 64.43 1.216 99.75 8.348 48.486 9.952 175.246 1.398 282 1.307 30.584-.025 60.192-.041 90.878-.051"
-                />
-              </g>
-            </g>
-          </svg>
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clipPath="url(#clip0_141_122)">
+                    <path
+                      ref={pathRef}
+                      d="M128.231 0C128.228 154.411 128.367 -43.7036 128.231 35.4115C128.141 87.4117 133.512 133.749 124.336 164.435C115.97 192.417 128.6 205.256 136.791 227.184C147.498 255.846 127.084 272.879 116.252 292.374C103.856 314.682 116.598 331.237 136.948 355.259C157.299 379.281 135.423 399.575 118.881 422.004C100.243 447.273 117.745 466.485 139.405 491.872C155.409 510.63 139.258 531.798 123.117 552.589C102.12 579.635 123.006 600.729 133.835 625.367C142.248 644.511 133.178 660.303 129.068 679.443C123.422 705.735 128.27 774.447 128.322 832.32C128.336 848.9 129.062 841.365 129.068 858"
+                      stroke="#6A7C6B"
+                      strokeWidth="2"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_141_122">
+                      <rect
+                        width="858"
+                        height="257"
+                        fill="white"
+                        transform="matrix(0 1 -1 0 257 0)"
+                      />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <AboutCard
+            ref={firstDivRef}
+            positionX={"55%"}
+            positionY={"38%"}
+            left={false}
+            title={"Bachelor’s Degree – Aix-Marseille University"}
+            text={
+              "Studied Applied Foreign Languages (English & Japanese) with courses in law, economics, management, and marketing."
+            }
+          />
+          <AboutCard
+            ref={secondDivRef}
+            positionX={"55%"}
+            positionY={"47%"}
+            left={true}
+            title={"Japanese Studies – EF Tokyo"}
+            text={"Intensive 4-month Japanese language program in Tokyo."}
+          />
         </div>
         <Footer />
       </div>

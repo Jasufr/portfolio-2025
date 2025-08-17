@@ -38,7 +38,7 @@ export default function Navbar() {
         </Link>
         <ul className="hidden text-2xl min-sm:flex gap-3 md:gap-5 items-center">
           <li className="relative group hidden sm:block cursor-pointer">
-            <Link to="/about">
+            <Link to="/about" className="font-montserrat">
               <span className="relative inline-block ">
                 About
                 <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
@@ -46,7 +46,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="relative group hidden sm:block cursor-pointer">
-            <Link to="/projects">
+            <Link to="/projects" className="font-montserrat">
               <span className="relative inline-block ">
                 Projects
                 <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
@@ -54,7 +54,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="relative group hidden sm:block cursor-pointer">
-            <Link to="/">
+            <Link to="/" className="font-montserrat">
               <span className="relative inline-block ">
                 Contact
                 <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
