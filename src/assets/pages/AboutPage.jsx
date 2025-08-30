@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MeGLBModel from "../components/MeGLBModel";
 import AboutCard from "../atoms/AboutCard";
+import ReachOut from "../components/ReachOut";
 
 export default function AboutPage() {
   const containerRef = useRef(null);
@@ -141,12 +142,12 @@ export default function AboutPage() {
     <>
       <MeGLBModel />
       {/* <Navbar /> */}
+      <Navbar />
       <div className="relative" ref={containerRef}>
-        <Navbar />
         <div className="relative" ref={subContainerRef}>
           <div className="flex flex-col">
             <div
-              className="pt-[150px] w-2/3 mx-auto text-justify"
+              className="pt-[150px] px-5 max-w-[600px] mx-auto text-justify"
               ref={introDivRef}
             >
               <h1>
@@ -253,8 +254,20 @@ export default function AboutPage() {
             }
           />
         </div>
-        <Footer />
+        {/* <div className="font-dmsans font-medium mx-5">
+          <ReachOut />
+        </div> */}
+        <div className="absolute left-0 bottom-[15%] sm:bottom-[10%] w-full font-semibold text-lg">
+          <p className="text-center px-5 max-w-[650px] mx-auto">
+            Currently, I’m focused on{" "}
+            <span className="text-orange">growing</span> as a developer and
+            exploring new challenges in{" "}
+            <span className="text-orange">3D web design</span> — always open to
+            collaboration and new ideas.
+          </p>
+        </div>
       </div>
+      <Footer />
     </>
   );
 }
