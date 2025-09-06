@@ -61,7 +61,7 @@ const projectsList = [
   },
 ];
 
-export default function Projects() {
+export default function Projects({ location }) {
   const [activeIndex, setActiveIndex] = useState(null);
   const [isTouch, setIsTouch] = useState(false);
 
@@ -78,11 +78,19 @@ export default function Projects() {
     return () => window.removeEventListener("resize", checkTouch);
   }, []);
 
+  const filteredProjects =
+    location === "lp"
+      ? projectsList.filter((_, i) => [2, 3, 5].includes(i))
+      : projectsList;
+
   return (
     <>
-      <h2 className="mb-8 font-dmsans font-medium text-3xl">Projects.</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-10">
-        {projectsList.map((project, index) => (
+      <div
+        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${
+          location !== "lp" ? " 2xl:grid-cols-4" : ""
+        } gap-10`}
+      >
+        {filteredProjects.map((project, index) => (
           <div
             key={index}
             className="rounded-xl group relative overflow-hidden cursor-pointer shadow-[0_2px_6px_rgba(0,0,0,0.5)]"
@@ -145,9 +153,6 @@ export default function Projects() {
             </div>
           </div>
         ))}
-      </div>
-      <div className="mb-28">
-        <ShadowButton link={"/projects"} text={"See More"} />
       </div>
     </>
   );

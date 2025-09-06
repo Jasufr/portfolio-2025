@@ -8,6 +8,7 @@ import Stack from "../components/Stack";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HeroThreeBg from "../components/HeroThreeBg";
 import MeGLBModel from "../components/MeGLBModel";
+import ShadowButton from "../atoms/ShadowButton";
 
 export default function Lp({ onThreeLoading }) {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -125,7 +126,12 @@ export default function Lp({ onThreeLoading }) {
         <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70 -mt-28 mb-28 rotate-5"></div>
         {/* Other Sections */}
         <div className="font-dmsans font-medium mx-5">
-          <Projects />
+          <h2 className="mb-8 font-dmsans font-medium text-3xl">Projects.</h2>
+
+          <Projects location="lp" />
+          <div className="mb-28">
+            <ShadowButton link={"/projects"} text={"See More"} />
+          </div>
           <Stack />
           <ReachOut />
         </div>
