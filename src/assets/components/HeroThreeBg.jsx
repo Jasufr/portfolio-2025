@@ -23,7 +23,7 @@ export default function HeroThreeBg({ onLoadingProgress }) {
     const loadingManager = new THREE.LoadingManager();
     loadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
       const percent = Math.round((itemsLoaded / itemsTotal) * 100);
-      console.log(percent);
+      // console.log(percent);
 
       if (onLoadingProgress) onLoadingProgress(percent);
     };

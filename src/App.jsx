@@ -5,6 +5,7 @@ import Lp from "./assets/pages/Lp";
 import AboutPage from "./assets/pages/AboutPage";
 import ProjectsPage from "./assets/pages/ProjectsPage";
 import LoaderScreen from "./assets/components/LoaderScreen";
+import ScrollToTop from "./assets/atoms/ScrollToTop";
 
 function App() {
   const [threePercent, setThreePercent] = useState(0);
@@ -64,6 +65,7 @@ function App() {
           onEnter={handleEnter}
         />
       )}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Lp onThreeLoading={setThreePercent} />} />
         <Route path="/about" element={<AboutPage />} />
