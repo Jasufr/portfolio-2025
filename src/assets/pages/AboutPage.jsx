@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MeGLBModel from "../components/MeGLBModel";
 import AboutCard from "../atoms/AboutCard";
-import ReachOut from "../components/ReachOut";
 
 export default function AboutPage() {
   const containerRef = useRef(null);
@@ -116,127 +115,11 @@ export default function AboutPage() {
     return () => {
       ctx.revert();
     };
-
-    // gsap.set(pathRef.current, { drawSVG: 0 });
-    // const tl = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: containerRef.current,
-    //     scrub: 1,
-    //     start: "top top",
-    //     // end: "bottom bottom",
-    //     end: "+=600%",
-    //     // pin: true,
-    //     // markers: true,
-    //   },
-    // });
-    // // if (!containerRef.current) return;
-
-    // // Set initial state
-    // gsap.set(introDivRef.current, {
-    //   opacity: 1,
-    //   y: 0,
-    // });
-
-    // gsap.set([firstDivRef.current, thirdDivRef.current, fifthDivRef.current], {
-    //   opacity: 0,
-    //   x: -20,
-    // });
-
-    // gsap.set(
-    //   [secondDivRef.current, fourthDivRef.current, sixthDivRef.current],
-    //   {
-    //     opacity: 0,
-    //     x: +20,
-    //   }
-    // );
-
-    // tl.to(subContainerRef.current, {
-    //   y: () => {
-    //     const intro = introDivRef.current;
-    //     const rect = intro.getBoundingClientRect();
-    //     return -rect.height;
-    //   },
-    // })
-    //   .to(
-    //     pathRef.current,
-    //     {
-    //       drawSVG: "100%",
-    //       duration: 1,
-    //       ease: "none",
-    //     },
-    //     "-=0.8"
-    //   )
-    //   .to(
-    //     firstDivRef.current,
-    //     {
-    //       opacity: 1,
-    //       x: 0,
-    //       duration: 0.3,
-    //       ease: "power2.out",
-    //     },
-    //     0
-    //   )
-    //   .to(
-    //     secondDivRef.current,
-    //     {
-    //       opacity: 1,
-    //       x: 0,
-    //       duration: 0.3,
-    //       ease: "power2.out",
-    //     },
-    //     0.1
-    //   )
-    //   .to(
-    //     thirdDivRef.current,
-    //     {
-    //       opacity: 1,
-    //       x: 0,
-    //       duration: 0.3,
-    //       ease: "power2.out",
-    //     },
-    //     0.2
-    //   )
-    //   .to(
-    //     fourthDivRef.current,
-    //     {
-    //       opacity: 1,
-    //       x: 0,
-    //       duration: 0.3,
-    //       ease: "power2.out",
-    //     },
-    //     0.3
-    //   )
-    //   .to(
-    //     fifthDivRef.current,
-    //     {
-    //       opacity: 1,
-    //       x: 0,
-    //       duration: 0.3,
-    //       ease: "power2.out",
-    //     },
-    //     0.4
-    //   )
-    //   .to(
-    //     sixthDivRef.current,
-    //     {
-    //       opacity: 1,
-    //       x: 0,
-    //       duration: 0.3,
-    //       ease: "power2.out",
-    //     },
-    //     0.5
-    //   );
-
-    // return () => {
-    //   if (tl.scrollTrigger) tl.scrollTrigger.kill();
-    //   tl.kill();
-    // };
   }, []);
 
   return (
     <>
       <MeGLBModel />
-      {/* <Navbar /> */}
       <Navbar />
       <main>
         <div className="relative" ref={containerRef}>
@@ -246,7 +129,7 @@ export default function AboutPage() {
                 className="pt-[150px] px-5 max-w-[600px] mx-auto text-justify"
                 ref={introDivRef}
               >
-                <h1>
+                <h1 className="font-dmsans">
                   Hi, I’m Justin Etienne — a French full-stack developer living
                   in Tokyo. I’m passionate about building interactive and
                   creative digital experiences, especially with 3D and modern

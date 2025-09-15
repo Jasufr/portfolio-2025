@@ -53,14 +53,6 @@ export default function Navbar() {
               </span>
             </Link>
           </li>
-          <li className="relative group hidden sm:block cursor-pointer">
-            <Link to="/" className="font-montserrat">
-              <span className="relative inline-block ">
-                Contact
-                <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
-              </span>
-            </Link>
-          </li>
 
           <li className="relative p-1">
             <img
@@ -165,12 +157,24 @@ export default function Navbar() {
             />
           </button>
         </div>
-        <div
-          className={`absolute h-screen top-0 right-0 bg-green overflow-hidden ${
-            menuOpen ? "w-full" : "w-0"
+        {/* <div
+          className={`absolute h-screen top-0 right-0 transition-colors duration-300 overflow-hidden ${
+            menuOpen ? "w-full bg-green" : "w-0 "
           }  sm:hidden z-50`}
+        > */}
+        <div
+          className={`
+    fixed top-0 right-0 h-screen w-full bg-green z-50
+    transition-opacity duration-500 ease-in-out
+    ${
+      menuOpen
+        ? "opacity-100 pointer-events-auto"
+        : "opacity-0 pointer-events-none"
+    }
+    sm:hidden
+  `}
         >
-          <div className="flex flex-col justify-between  text-white font-montserrat font-medium items-center overflow-hidden transition-all duration-300 min-h-[100dvh]">
+          <div className="flex flex-col justify-between  text-white font-montserrat font-medium items-center overflow-hidden min-h-[100dvh]">
             <Link to="/" className="block w-fit self-start">
               <img
                 src="/logo/white_line_no_bg_reframed.png"
@@ -185,9 +189,6 @@ export default function Navbar() {
                 </li>
                 <li>
                   <Link to="/projects">Projects</Link>
-                </li>
-                <li>
-                  <Link to="/">Contact</Link>
                 </li>
               </ul>
             </div>
