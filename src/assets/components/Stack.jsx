@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   siReact,
   siTailwindcss,
@@ -82,9 +83,11 @@ const stackList = [
 ];
 
 export default function Stack() {
+  const { t } = useTranslation();
+
   return (
     <>
-      <h2 className="mb-8 text-3xl">Stack.</h2>
+      <h2 className="mb-8 text-3xl">{t("stack")}</h2>
       <div className="bg-beige -mx-5 py-20 px-5">
         <ul className="flex flex-wrap items-center justify-center sm:w-[80%] max-w-[1024px] mx-auto gap-8">
           {stackList.map((stack, index) => (

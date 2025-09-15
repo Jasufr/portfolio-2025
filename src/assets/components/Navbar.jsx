@@ -7,6 +7,7 @@ import {
   faLinkedinIn,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import i18n from "../config/i18n";
 
 export default function Navbar() {
   const [language, setLanguage] = useState("uk");
@@ -22,6 +23,8 @@ export default function Navbar() {
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
     setShowFlags(false);
+    i18n.changeLanguage(lang);
+    localStorage.setItem("language", lang);
   };
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);

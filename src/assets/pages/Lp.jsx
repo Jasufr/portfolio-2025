@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HeroThreeBg from "../components/HeroThreeBg";
 import MeGLBModel from "../components/MeGLBModel";
 import ShadowButton from "../atoms/ShadowButton";
+import { useTranslation } from "react-i18next";
 
 export default function Lp({ onThreeLoading }) {
   const [showOverlay, setShowOverlay] = useState(false);
@@ -44,6 +45,8 @@ export default function Lp({ onThreeLoading }) {
     };
   }, [isTouch, showOverlay]);
 
+  const { t } = useTranslation();
+
   return (
     <>
       {/* 3D Model Overlay - always on top, pointer-events none */}
@@ -55,11 +58,9 @@ export default function Lp({ onThreeLoading }) {
         <div className="relative mx-5 sm:mx-16 h-screen flex justify-center items-center">
           <HeroThreeBg onLoadingProgress={onThreeLoading} />
           <h1 className="font-dmsans font-semibold text-center text-3xl relative z-10">
-            <span>Bonjour, welcome to my world.</span>
+            <span>{t("welcome")}</span>
             <br />
-            <span className="text-orange block mt-2">
-              Crafting experiences that resonate.
-            </span>
+            <span className="text-orange block mt-2">{t("slogan")}</span>
           </h1>
           {/* <MeModel /> */}
         </div>
@@ -67,9 +68,7 @@ export default function Lp({ onThreeLoading }) {
         <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70  mt-12 -mb-28 rotate-5"></div>
         <div className="w-full h-[400px] sm:h-[600px] bg-beige flex items-center">
           <div className="relative z-10 flex-1 font-dmsans font-medium text-3xl text-center">
-            <h2 className="text-center mb-10 mx-5">
-              Explore my sandbox of 3D micro-experiences.
-            </h2>
+            <h2 className="text-center mb-10 mx-5">{t("sandbox")}</h2>
             <div
               ref={showcaseRef}
               className="shadow-[0_2px_6px_rgba(0,0,0,0.5)] group relative w-[90%] sm:w-[70%] aspect-[1/0.7] sm:aspect-[1/0.55] max-w-[1024px] bg-black mx-auto rounded-full overflow-hidden cursor-pointer"
@@ -113,7 +112,7 @@ export default function Lp({ onThreeLoading }) {
                   onClick={isTouch ? (e) => e.stopPropagation() : undefined}
                   className="p-2 flex justify-center items-center gap-3 hover:text-black/50 transition-all duration-300"
                 >
-                  <span>View Site.</span>
+                  <span>{t("site")}</span>
                   <FontAwesomeIcon
                     className="text-lg"
                     icon={faUpRightFromSquare}
@@ -126,11 +125,13 @@ export default function Lp({ onThreeLoading }) {
         <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70 -mt-28 mb-28 rotate-5"></div>
         {/* Other Sections */}
         <div className="font-dmsans font-medium mx-5">
-          <h2 className="mb-8 font-dmsans font-medium text-3xl">Projects.</h2>
+          <h2 className="mb-8 font-dmsans font-medium text-3xl">
+            {t("projectsTitle")}
+          </h2>
 
           <Projects location="lp" />
           <div className="mb-28">
-            <ShadowButton link={"/projects"} text={"See More"} />
+            <ShadowButton link={"/projects"} text={t("seeMoreButton")} />
           </div>
           <Stack />
           <ReachOut />
