@@ -14,7 +14,7 @@ export default function ReachOut() {
         {t("reachOutSlogan2")}
       </p>
       <ShadowButton
-        link="mailto:juetienne7@gmail.com"
+        link="mailto:justinetiennefr@outlook.com"
         text={t("reachOutButton")}
       />
     </div>
