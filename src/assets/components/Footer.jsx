@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import SnsLinks from "../atoms/SnsLinks";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <div className="mx-5 sm:w-[80%] sm:mx-auto font-montserrat font-medium text-sm sm:text-xl">
       <div className="flex items-center justify-between">
@@ -20,7 +23,7 @@ export default function Footer() {
               className="flex justify-between w-20 sm:w-28 items-center group"
               to="/about"
             >
-              <span className="">About</span>
+              <span className="whitespace-nowrap">{t("about")}</span>
               <FontAwesomeIcon
                 className="text-sm group-hover:translate-x-2 transition-all duration-300"
                 icon={faChevronRight}
@@ -32,7 +35,7 @@ export default function Footer() {
               className="flex justify-between w-20 sm:w-28 items-center group"
               to="/projects"
             >
-              <span className="">Projects</span>
+              <span className="whitespace-nowrap">{t("projectsNav")}</span>
               <FontAwesomeIcon
                 className="text-sm group-hover:translate-x-2 transition-all duration-300"
                 icon={faChevronRight}

@@ -8,6 +8,7 @@ import {
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import i18n from "../config/i18n";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const [language, setLanguage] = useState(
@@ -38,6 +39,8 @@ export default function Navbar() {
     }
   }, []);
 
+  const { t } = useTranslation();
+
   return (
     <>
       <nav className="z-99 flex justify-between px-5 py-4 sm:px-16 sm:py-6 items-center fixed w-full navbar-blur bg-white/25">
@@ -52,7 +55,7 @@ export default function Navbar() {
           <li className="relative group hidden sm:block cursor-pointer">
             <Link to="/about" className="font-montserrat">
               <span className="relative inline-block ">
-                About
+                {t("about")}
                 <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
               </span>
             </Link>
@@ -60,7 +63,7 @@ export default function Navbar() {
           <li className="relative group hidden sm:block cursor-pointer">
             <Link to="/projects" className="font-montserrat">
               <span className="relative inline-block ">
-                Projects
+                {t("projectsNav")}
                 <span className="absolute left-1/2 top-1/2 h-[2px] w-0 bg-green transition-all duration-300 group-hover:w-[110%] -translate-x-1/2 -translate-y-1/2"></span>
               </span>
             </Link>
@@ -122,25 +125,6 @@ export default function Navbar() {
               )}
             </div>
           </div>
-          {/* <div
-            className={`absolute p-1 left-0 top-full mt-1 bg-white rounded flex flex-col gap-2 z-10 transition-all duration-300 ease-out overflow-hidden ${
-              showFlags
-                ? "opacity-100 translate-y-0 max-h-40"
-                : "opacity-0 -translate-y-3 max-h-0"
-            }`}
-          >
-            {Object.entries(flagMap).map(([lang, path]) =>
-              lang !== language ? (
-                <img
-                  key={lang}
-                  src={path}
-                  alt={`${lang} flag`}
-                  className="w-7 cursor-pointer hover:scale-110 transition-transform mt-2 drop-shadow-sm"
-                  onClick={() => handleLanguageChange(lang)}
-                />
-              ) : null
-            )}
-          </div> */}
           <button
             onClick={toggleMenu}
             className="relative w-12 h-12 rounded flex items-center justify-center z-100 min-sm:hidden"
@@ -169,11 +153,6 @@ export default function Navbar() {
             />
           </button>
         </div>
-        {/* <div
-          className={`absolute h-screen top-0 right-0 transition-colors duration-300 overflow-hidden ${
-            menuOpen ? "w-full bg-green" : "w-0 "
-          }  sm:hidden z-50`}
-        > */}
         <div
           className={`
     fixed top-0 right-0 h-screen w-full bg-green z-50
@@ -195,18 +174,18 @@ export default function Navbar() {
               />
             </Link>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <ul className="flex flex-col gap-4 text-2xl">
+              <ul className="flex flex-col gap-4 text-2xl text-center">
                 <li>
-                  <Link to="/about">About</Link>
+                  <Link to="/about">{t("about")}</Link>
                 </li>
                 <li>
-                  <Link to="/projects">Projects</Link>
+                  <Link to="/projects">{t("projectsNav")}</Link>
                 </li>
               </ul>
             </div>
             <ul className="flex gap-5 mb-4 text-3xl">
               <li>
-                <a href="mailto:juetienne7@gmail.com">
+                <a href="mailto:justinetiennefr@outlook.com">
                   <FontAwesomeIcon icon={faEnvelope} />
                 </a>
               </li>

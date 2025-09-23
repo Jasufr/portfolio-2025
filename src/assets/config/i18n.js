@@ -5,16 +5,19 @@ import enLp from "../translations/en/lp";
 import enProjects from "../translations/en/projects";
 import enProjectPage from "../translations/en/projectPage";
 import enAboutPage from "../translations/en/aboutPage";
+import enNavBar from "../translations/en/navBar";
 
 import frLp from "../translations/fr/lp";
 import frProjects from "../translations/fr/projects";
 import frProjectPage from "../translations/fr/projectPage";
 import frAboutPage from "../translations/fr/aboutPage";
+import frNavBar from "../translations/fr/navBar";
 
 import jpLp from "../translations/jp/lp";
 import jpProjects from "../translations/jp/projects";
 import jpProjectPage from "../translations/jp/projectPage";
 import jpAboutPage from "../translations/jp/aboutPage";
+import jpNavBar from "../translations/jp/navBar";
 
 const resources = {
   en: {
@@ -23,6 +26,7 @@ const resources = {
       projects: { list: enProjects },
       ...enProjectPage,
       ...enAboutPage,
+      ...enNavBar,
     },
   },
   fr: {
@@ -31,6 +35,7 @@ const resources = {
       projects: { list: frProjects },
       ...frProjectPage,
       ...frAboutPage,
+      ...frNavBar,
     },
   },
   jp: {
@@ -39,6 +44,7 @@ const resources = {
       projects: { list: jpProjects },
       ...jpProjectPage,
       ...jpAboutPage,
+      ...jpNavBar,
     },
   },
 };

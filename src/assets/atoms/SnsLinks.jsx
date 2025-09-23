@@ -15,7 +15,7 @@ export default function SnsLinks({ variant }) {
   return (
     <ul className={ulClass}>
       <li className="hover:opacity-60 transition-opacity duration-300">
-        <a href="mailto:juetienne7@gmail.com">
+        <a href="mailto:justinetiennefr@outlook.com">
           <FontAwesomeIcon icon={faEnvelope} />
         </a>
       </li>

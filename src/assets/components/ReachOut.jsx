@@ -13,7 +13,10 @@ export default function ReachOut() {
         <br className="hidden @min-[460px]:inline" />
         {t("reachOutSlogan2")}
       </p>
-      <ShadowButton link={"/contact"} text={t("reachOutButton")} />
+      <ShadowButton
+        link="mailto:juetienne7@gmail.com"
+        text={t("reachOutButton")}
+      />
     </div>
   );
 }
