@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MeGLBModel from "../components/MeGLBModel";
 import AboutCard from "../atoms/AboutCard";
+import { useTranslation } from "react-i18next";
 
 export default function AboutPage() {
   const containerRef = useRef(null);
@@ -117,6 +118,8 @@ export default function AboutPage() {
     };
   }, []);
 
+  const { t } = useTranslation();
+
   return (
     <>
       <MeGLBModel />
@@ -130,13 +133,9 @@ export default function AboutPage() {
                 ref={introDivRef}
               >
                 <h1 className="font-dmsans">
-                  Hi, I’m Justin Etienne — a French full-stack developer living
-                  in Tokyo. I’m passionate about building interactive and
-                  creative digital experiences, especially with 3D and modern
-                  web technologies. <br /> With an academic background in
-                  languages, culture, and international relations, I bring a
-                  unique perspective that bridges technology, communication, and
-                  design.
+                  {t("start")}
+                  <br />
+                  {t("start2")}
                 </h1>
               </div>
               <div className="flex-grow flex justify-center">
@@ -175,69 +174,57 @@ export default function AboutPage() {
               positionY={"40%"}
               positionYsm={"48%"}
               left={false}
-              title={"Bachelor’s Degree – Aix-Marseille University"}
-              text={
-                "Studied Applied Foreign Languages (English & Japanese) with courses in law, economics, management, and marketing."
-              }
+              title={t("bachelorTitle")}
+              text={t("bachelor")}
             />
             <AboutCard
               ref={secondDivRef}
               positionY={"48%"}
               positionYsm={"53%"}
               left={true}
-              title={"EF Tokyo – Japanese Language Program"}
-              text={
-                "Intensive 4-month Japanese study, gaining strong communication and immersion experience in Tokyo."
-              }
+              title={t("efTitle")}
+              text={t("ef")}
             />
             <AboutCard
               ref={thirdDivRef}
               positionY={"54%"}
               positionYsm={"58%"}
               left={false}
-              title={"Master’s Degree (Year 1) – Aix-Marseille University"}
-              text={
-                "Asian societies & cultures, with focus on Japanese geopolitics. Research project on wine in France–Japan international relations."
-              }
+              title={t("masterTitle")}
+              text={t("master")}
             />
             <AboutCard
               ref={fourthDivRef}
               positionY={"62%"}
               positionYsm={"64%"}
               left={true}
-              title={"Meiji University – University Exchange"}
-              text={
-                "Studied intercultural communication and deepened knowledge of Japanese society while living in Tokyo."
-              }
+              title={t("meijiTitle")}
+              text={t("meiji")}
             />
             <AboutCard
               ref={fifthDivRef}
               positionY={"68%"}
               positionYsm={"69%"}
               left={false}
-              title={"Le Wagon Tokyo – Web Development Bootcamp"}
-              text={
-                "3-month intensive program learning full-stack development through hands-on projects."
-              }
+              title={t("leWagonTitle")}
+              text={t("leWagon")}
             />
             <AboutCard
               ref={sixthDivRef}
               positionY={"76%"}
               positionYsm={"74%"}
               left={true}
-              title={"Full-Stack Developer – GxP"}
-              text={
-                "Currently building and maintaining web applications, combining creativity and technical expertise."
-              }
+              title={t("gxpTitle")}
+              text={t("gxp")}
             />
           </div>
           <div className="absolute left-0 bottom-[15%] sm:bottom-[10%] w-full font-semibold text-lg">
             <p className="text-center px-5 max-w-[650px] mx-auto">
-              Currently, I’m focused on{" "}
-              <span className="text-orange">growing</span> as a developer and
-              exploring new challenges in{" "}
-              <span className="text-orange">3D web design</span> — always open
-              to collaboration and new ideas.
+              {t("now")}
+              <span className="text-orange">{t("nowHighlight")}</span>
+              {t("now2")}
+              <span className="text-orange">{t("nowHighlight2")}</span>
+              {t("now3")}
             </p>
           </div>
         </div>

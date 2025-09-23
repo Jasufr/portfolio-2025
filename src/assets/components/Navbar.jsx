@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   faGithub,
@@ -10,7 +10,9 @@ import {
 import i18n from "../config/i18n";
 
 export default function Navbar() {
-  const [language, setLanguage] = useState("uk");
+  const [language, setLanguage] = useState(
+    () => localStorage.getItem("language") || "uk"
+  );
   const [showFlags, setShowFlags] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -28,6 +30,13 @@ export default function Navbar() {
   };
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem("language");
+    if (storedLanguage) {
+      setLanguage(storedLanguage);
+    }
+  }, []);
 
   return (
     <>
