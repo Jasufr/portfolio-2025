@@ -5,20 +5,39 @@ import * as THREE from "three";
 
 export default function MeGLBModel() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [isTouch, setIsTouch] = useState(false);
   const initialScale = useRef(0);
   const finalScale = useRef(window.innerWidth < 640 ? 0.016 : 0.018);
   const startTime = useRef(null);
-  // Track mouse globally for 3D model
+
+  // Check for touch device
   useEffect(() => {
-    function handleMouseMove(e) {
-      // Normalize mouse position to [-1, 1] for both axes
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = -((e.clientY / window.innerHeight) * 2 - 1);
-      setMouse({ x, y });
-    }
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const checkTouch = () => {
+      setIsTouch(
+        "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0 ||
+          navigator.msMaxTouchPoints > 0
+      );
+    };
+    checkTouch();
+    window.addEventListener("resize", checkTouch);
+    return () => window.removeEventListener("resize", checkTouch);
   }, []);
+
+  // Track mouse globally for 3D model only on non-touch devices
+  useEffect(() => {
+    if (!isTouch) {
+      // Only add mouse tracking on non-touch devices
+      function handleMouseMove(e) {
+        // Normalize mouse position to [-1, 1] for both axes
+        const x = (e.clientX / window.innerWidth) * 2 - 1;
+        const y = -((e.clientY / window.innerHeight) * 2 - 1);
+        setMouse({ x, y });
+      }
+      window.addEventListener("mousemove", handleMouseMove);
+      return () => window.removeEventListener("mousemove", handleMouseMove);
+    }
+  }, [isTouch]);
 
   function Model() {
     const group = useRef();
@@ -95,10 +114,17 @@ export default function MeGLBModel() {
         }
       }
 
-      // Head tracking
-      const target = new THREE.Vector3(mouse.x, mouse.y, -1);
-      target.unproject(state.camera);
-      group.current.getObjectByName("Head")?.lookAt(target);
+      // Head tracking - only on non-touch devices
+      if (!isTouch) {
+        const target = new THREE.Vector3(mouse.x, mouse.y, -1);
+        target.unproject(state.camera);
+        group.current.getObjectByName("Head")?.lookAt(target);
+      } else {
+        // On touch devices, look at center point slightly above
+        const centerTarget = new THREE.Vector3(0.75, -0.25, -0.75);
+        centerTarget.unproject(state.camera);
+        group.current.getObjectByName("Head")?.lookAt(centerTarget);
+      }
     });
 
     return <primitive ref={group} object={scene} />;
