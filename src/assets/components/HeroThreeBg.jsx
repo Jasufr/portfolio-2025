@@ -129,6 +129,39 @@ export default function HeroThreeBg({ onLoadingProgress }) {
           model.position.set(...cfg.position);
           model.rotation.set(...cfg.rotation);
           model.userData.animate = cfg.animate;
+          // Start with scale 0 and animate to target scale
+          model.scale.set(0, 0, 0);
+          const targetScale = { ...cfg.scale };
+
+          // Create animation
+          const startTime = Date.now();
+          const duration = 2000; // Animation duration in milliseconds
+          model.userData.scaleAnimation = {
+            startTime,
+            duration,
+            targetScale,
+            animate: () => {
+              const elapsed = Date.now() - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              // Use easeOutElastic for a bouncy effect
+              const easeOutElastic = (x) => {
+                const c4 = (2 * Math.PI) / 3;
+                return x === 0
+                  ? 0
+                  : x === 1
+                  ? 1
+                  : Math.pow(4, -10 * x) * Math.sin((x * 1 - 0.75) * c4) + 1;
+              };
+              const scale = easeOutElastic(progress);
+              model.scale.set(
+                targetScale[0] * scale,
+                targetScale[1] * scale,
+                targetScale[2] * scale
+              );
+              return progress < 1;
+            },
+          };
+
           scene.add(model);
           models[i] = model;
         },
@@ -153,7 +186,17 @@ export default function HeroThreeBg({ onLoadingProgress }) {
     let frameId;
     const animate = () => {
       models.forEach((model) => {
-        if (model && model.userData.animate) model.userData.animate(model);
+        // Handle scale animation
+        if (model && model.userData.scaleAnimation) {
+          const stillAnimating = model.userData.scaleAnimation.animate();
+          if (!stillAnimating) {
+            delete model.userData.scaleAnimation;
+          }
+        }
+        // Handle rotation animation
+        if (model && model.userData.animate) {
+          model.userData.animate(model);
+        }
       });
       renderer.render(scene, camera);
       frameId = requestAnimationFrame(animate);

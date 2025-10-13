@@ -4,9 +4,10 @@ import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 export default function MeGLBModel() {
-  // Mouse position for 3D model
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const isMobile = window.innerWidth < 640;
+  const initialScale = useRef(0);
+  const finalScale = useRef(window.innerWidth < 640 ? 0.016 : 0.018);
+  const startTime = useRef(null);
   // Track mouse globally for 3D model
   useEffect(() => {
     function handleMouseMove(e) {
@@ -27,6 +28,14 @@ export default function MeGLBModel() {
     idleAnimation[0].name = "Idle";
     const { actions } = useAnimations(idleAnimation, group);
     const { size, camera } = useThree();
+
+    // Initialize animation start time
+    useEffect(() => {
+      if (startTime.current === null) {
+        startTime.current = Date.now();
+        group.current.scale.setScalar(0); // Start with scale 0
+      }
+    }, []);
 
     useEffect(() => {
       if (actions["Idle"]) {
@@ -56,26 +65,43 @@ export default function MeGLBModel() {
 
     useFrame((state, delta) => {
       mixer.current?.update(delta);
+
+      // Animation
+      if (startTime.current !== null && group.current) {
+        const elapsed = Date.now() - startTime.current;
+        const duration = 2000; // 2 seconds duration
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Use easeOutElastic for a bouncy effect
+        const easeOutElastic = (x) => {
+          const c4 = (2 * Math.PI) / 3;
+          return x === 0
+            ? 0
+            : x === 1
+            ? 1
+            : Math.pow(4, -10 * x) * Math.sin((x * 1 - 0.75) * c4) + 1;
+        };
+
+        if (progress < 1) {
+          const scale = easeOutElastic(progress);
+          const currentScale = finalScale.current * scale;
+          group.current.scale.setScalar(currentScale);
+        } else if (
+          progress === 1 &&
+          group.current.scale.x !== finalScale.current
+        ) {
+          // Ensure we set the final scale exactly
+          group.current.scale.setScalar(finalScale.current);
+        }
+      }
+
+      // Head tracking
       const target = new THREE.Vector3(mouse.x, mouse.y, -1);
       target.unproject(state.camera);
-      group.current.getObjectByName("Head").lookAt(target);
+      group.current.getObjectByName("Head")?.lookAt(target);
     });
 
-    const modelScale = isMobile
-      ? {
-          scale: 0.016,
-        }
-      : { scale: 0.018 };
-
-    return (
-      <primitive
-        ref={group}
-        object={scene}
-        // scale={modelPosition.scale}
-        // position={modelPosition.position}
-        scale={modelScale.scale}
-      />
-    );
+    return <primitive ref={group} object={scene} />;
   }
 
   return (

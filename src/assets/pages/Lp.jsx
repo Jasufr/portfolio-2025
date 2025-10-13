@@ -62,7 +62,6 @@ export default function Lp({ onThreeLoading }) {
             <br />
             <span className="text-orange block mt-2">{t("slogan")}</span>
           </h1>
-          {/* <MeModel /> */}
         </div>
         {/* Sandbox Showcase */}
         <div className="bg-beige w-[120%] relative left-1/2 -translate-x-1/2 h-70  mt-12 -mb-28 rotate-5"></div>
