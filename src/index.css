@@ -13,4 +13,6 @@
   --weight-montserrat-medium: 500;
   --weight-dmsans-semibold: 600;
   --weight-dmsans-medium: 500;
+
+  --breakpoint-xs: 30rem;
 }

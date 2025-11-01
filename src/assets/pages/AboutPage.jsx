@@ -167,56 +167,49 @@ export default function AboutPage() {
                     </defs>
                   </svg>
                 </div>
+                <div
+                  className="absolute w-full grid items-center grid-cols-2 gap-x-12 xs:gap-x-16 max-h-[700px]"
+                  style={{ height: "-webkit-fill-available" }}
+                >
+                  <AboutCard
+                    ref={firstDivRef}
+                    left={false}
+                    title={t("bachelorTitle")}
+                    text={t("bachelor")}
+                  />
+                  <AboutCard
+                    ref={secondDivRef}
+                    left={true}
+                    title={t("efTitle")}
+                    text={t("ef")}
+                  />
+                  <AboutCard
+                    ref={thirdDivRef}
+                    left={false}
+                    title={t("masterTitle")}
+                    text={t("master")}
+                  />
+                  <AboutCard
+                    ref={fourthDivRef}
+                    left={true}
+                    title={t("meijiTitle")}
+                    text={t("meiji")}
+                  />
+                  <AboutCard
+                    ref={fifthDivRef}
+                    left={false}
+                    title={t("leWagonTitle")}
+                    text={t("leWagon")}
+                  />
+                  <AboutCard
+                    ref={sixthDivRef}
+                    left={true}
+                    title={t("gxpTitle")}
+                    text={t("gxp")}
+                  />
+                </div>
               </div>
             </div>
-            <AboutCard
-              ref={firstDivRef}
-              positionY={"40%"}
-              positionYsm={"48%"}
-              left={false}
-              title={t("bachelorTitle")}
-              text={t("bachelor")}
-            />
-            <AboutCard
-              ref={secondDivRef}
-              positionY={"48%"}
-              positionYsm={"53%"}
-              left={true}
-              title={t("efTitle")}
-              text={t("ef")}
-            />
-            <AboutCard
-              ref={thirdDivRef}
-              positionY={"54%"}
-              positionYsm={"58%"}
-              left={false}
-              title={t("masterTitle")}
-              text={t("master")}
-            />
-            <AboutCard
-              ref={fourthDivRef}
-              positionY={"62%"}
-              positionYsm={"64%"}
-              left={true}
-              title={t("meijiTitle")}
-              text={t("meiji")}
-            />
-            <AboutCard
-              ref={fifthDivRef}
-              positionY={"68%"}
-              positionYsm={"69%"}
-              left={false}
-              title={t("leWagonTitle")}
-              text={t("leWagon")}
-            />
-            <AboutCard
-              ref={sixthDivRef}
-              positionY={"76%"}
-              positionYsm={"74%"}
-              left={true}
-              title={t("gxpTitle")}
-              text={t("gxp")}
-            />
           </div>
           <div className="absolute left-0 bottom-[15%] sm:bottom-[10%] w-full font-semibold text-lg">
             <p className="text-center px-5 max-w-[650px] mx-auto">
